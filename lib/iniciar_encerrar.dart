@@ -25,11 +25,11 @@ class _ExpedientePageState extends State<ExpedientePage> {
       if (isIniciarEnabled) {
         // Store the start time and display it
         startTime = DateTime.now();
-        iniciarTime = TimeOfDay.fromDateTime(startTime!).format(context);
+        iniciarTime = '${startTime!.hour.toString().padLeft(2, '0')}:${startTime!.minute.toString().padLeft(2, '0')}';
       } else {
         // Store the end time and calculate the duration
         endTime = DateTime.now();
-        encerrarTime = TimeOfDay.fromDateTime(endTime!).format(context);
+        encerrarTime = '${endTime!.hour.toString().padLeft(2, '0')}:${endTime!.minute.toString().padLeft(2, '0')}';
         workedDuration = endTime!.difference(startTime!);
       }
 

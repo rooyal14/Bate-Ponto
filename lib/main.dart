@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Bate-Ponto'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -48,11 +48,11 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
+              decoration: InputDecoration(labelText: 'Usuário'),
             ),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(labelText: 'Senha'),
               obscureText: true,
             ),
             SizedBox(height: 20),

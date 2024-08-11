@@ -13,19 +13,19 @@ class _HourSelectionPageState extends State<HourSelectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Work Hours'),
+        title: Text('Selecionar Horas de Trabalho'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Select your work hours for the day:',
+              'Selecione suas horas de trabalho para o dia:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
             Text(
-              'Hours: ${_selectedTime.hour} Hours, ${_selectedTime.minute} Minutes',
+              'Horas: ${_selectedTime.hour.toString().padLeft(2, '0')} Horas, ${_selectedTime.minute.toString().padLeft(2, '0')} Minutos',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
@@ -35,6 +35,12 @@ class _HourSelectionPageState extends State<HourSelectionPage> {
                 final TimeOfDay? time = await showTimePicker(
                   context: context,
                   initialTime: _selectedTime,
+                  builder: (BuildContext context, Widget? child) {
+                    return MediaQuery(
+                      data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+                      child: child!,
+                    );
+                  },
                 );
 
                 if (time != null && time != _selectedTime) {
@@ -43,7 +49,7 @@ class _HourSelectionPageState extends State<HourSelectionPage> {
                   });
                 }
               },
-              child: Text('Pick Work Hours'),
+              child: Text('Escolher Horas de Trabalho'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
@@ -57,7 +63,7 @@ class _HourSelectionPageState extends State<HourSelectionPage> {
                   ),
                 );
               },
-              child: Text('Proceed to Expediente'),
+              child: Text('Prosseguir para Expediente'),
             ),
           ],
         ),

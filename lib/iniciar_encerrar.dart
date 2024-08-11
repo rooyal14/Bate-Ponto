@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ExpedientePage extends StatefulWidget {
   final TimeOfDay workHours;
+  final TimeOfDay endHours;
 
-  ExpedientePage({required this.workHours});
+  ExpedientePage({required this.workHours, required this.endHours});
 
   @override
   _ExpedientePageState createState() => _ExpedientePageState();
@@ -53,6 +54,11 @@ class _ExpedientePageState extends State<ExpedientePage> {
       minutes: widget.workHours.minute,
     );
 
+    final totalEndTime = Duration(
+      hours: widget.endHours.hour,
+      minutes: widget.endHours.minute,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Expediente'),
@@ -65,6 +71,12 @@ class _ExpedientePageState extends State<ExpedientePage> {
             Text(
               'Meta diária: ${_formatDuration(totalWorkTime)}',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Horário de saída: ${_formatDuration(totalEndTime)}',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 40),

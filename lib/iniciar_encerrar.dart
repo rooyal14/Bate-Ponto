@@ -37,7 +37,7 @@ class _ExpedientePageState extends State<ExpedientePage> {
 
   void _toggleButtons() {
     setState(() {
-      // Toggle the button states
+      // Alternar enabled dos botões iniciar e encerrar expediente
       isIniciarEnabled = !isIniciarEnabled;
       isEncerrarEnabled = !isEncerrarEnabled;
     });
@@ -46,7 +46,7 @@ class _ExpedientePageState extends State<ExpedientePage> {
 
   void _handleIniciar(){
     setState(() {
-      // Store the start time and display it
+      // Inicia expediente
       startTime = DateTime.now();
       _artificialTimePassingLoop(startTime, 1);
       iniciarTime = '${startTime!.hour.toString().padLeft(2, '0')}:${startTime!.minute.toString().padLeft(2, '0')}';
@@ -101,12 +101,12 @@ class _ExpedientePageState extends State<ExpedientePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Calculate total work time as a Duration
+    // Declara meta diária
     final totalWorkTime = Duration(
       hours: widget.workHours.hour,
       minutes: widget.workHours.minute,
     );
-
+    // Declara estimativa de final do expediente
     final totalEndTime = Duration(
       hours: widget.endHours.hour,
       minutes: widget.endHours.minute,
@@ -126,7 +126,6 @@ class _ExpedientePageState extends State<ExpedientePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Display the daily goal in the middle of the screen
             Text(
               'Meta diária: ${_formatDuration(totalWorkTime)}',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue),
@@ -145,7 +144,6 @@ class _ExpedientePageState extends State<ExpedientePage> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 40),
-            // Create a grid layout with two columns
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -154,7 +152,7 @@ class _ExpedientePageState extends State<ExpedientePage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        height: 50, // Fixed height for time display
+                        height: 50,
                         alignment: Alignment.center,
                         child: Text(
                           iniciarTime != null ? 'Iniciado às: $iniciarTime' : '',
@@ -168,13 +166,13 @@ class _ExpedientePageState extends State<ExpedientePage> {
                     ],
                   ),
                 ),
-                SizedBox(width: 20), // Space between the columns
+                SizedBox(width: 20),
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        height: 50, // Fixed height for time display
+                        height: 50,
                         alignment: Alignment.center,
                         child: Text(
                           encerrarTime != null ? 'Encerrado às: $encerrarTime' : '',

@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   void _login() {
-    // Fake login logic: Always redirects to the TimeSelectionPage
+    // Login fake
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => HourSelectionPage()),
